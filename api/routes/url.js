@@ -12,7 +12,7 @@ router.post('/shorten', async (req, res) => {
     const baseUrl = config.get('baseUrl')
 
     if(!validUrl.isUri(longUrl)) {
-        return res.statusCode(401).json('invalid base url 🤞')
+        return res.status(401).json('invalid base url 🤞')
     }
 
     // Create url codee
@@ -39,10 +39,10 @@ router.post('/shorten', async (req, res) => {
             }
         } catch (error) {
             console.error(error)
-            res.statusCode(500).json('Server Error 😥')
+            res.status(500).json('Server Error 😥')
         }
     } else {
-        res.statusCode(401).json('Invalid Base Url 🤞')
+        res.status(401).json('Invalid Base Url 🤞')
     }
 })
 
