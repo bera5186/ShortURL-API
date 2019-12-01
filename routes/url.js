@@ -10,6 +10,7 @@ const model = require('../models/Url')
 router.post('/shorten', async (req, res) => {
     const { longUrl } = req.body
     const baseUrl = config.get('baseUrl')
+    console.log(baseUrl)
 
     if(!validUrl.isUri(longUrl)) {
         return res.status(401).json('invalid base url 🤞')
@@ -47,4 +48,4 @@ router.post('/shorten', async (req, res) => {
 })
 
 
-module.exports = router
+module.exports = router;

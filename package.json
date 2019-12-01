@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev" : "nodemon index"
+    "dev": "nodemon index"
   },
   "author": "Rahul Bera",
   "license": "ISC",
   "dependencies": {
     "config": "^3.2.3",
     "express": "^4.17.1",
+    "hbs": "^4.0.6",
     "mongoose": "^5.7.5",
     "shortid": "^2.2.14",
     "valid-url": "^1.0.9"
