@@ -82,7 +82,7 @@
         headers: { 'Content-Type': 'application/json' }
       }
 
-      await fetch('http://localhost:5000/api/url/shorten', postData)
+      await fetch('https://biteurl.herokuapp.com/api/url/shorten', postData)
         .then(res => {
           console.log(res.json().then((data) => {
             console.log(data.shortUrl)

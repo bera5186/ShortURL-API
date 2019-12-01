@@ -1,5 +1,5 @@
 {
     "mongoURIProd": "mongodb+srv://rahulbera21:rahul123@shorturl-m3lkd.mongodb.net/test?retryWrites=true&w=majority",
     "mongoURIDev" : "mongodb://localhost:27017/shortUrl",
-    "baseUrl": "http://localhost:5000"
+    "baseUrl": "https://biteurl.herokuapp.com/"
 }  
