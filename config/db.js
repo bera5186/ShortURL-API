@@ -1,7 +1,12 @@
 const mongoose = require('mongoose')
 const config = require('config')
 
-const db = config.get('mongoURIProd')
+let db = config.get('mongoURIProd')
+
+if (config.get('env') === "dev") {
+    db = config.get('mongoURIDev')
+}
+
 
 const connectDB = async () => {
     try {

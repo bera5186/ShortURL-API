@@ -9,7 +9,11 @@ const model = require('../models/Url')
 // @route POST /api/url/shorten
 router.post('/shorten', async (req, res) => {
     const { longUrl } = req.body
-    const baseUrl = config.get('baseUrl')
+    let baseUrl = config.get('baseUrlProd')
+    if (config.get('env') == 'dev') {
+        baseUrl = config.get('baseUrlDev')
+    }
+    
 
 
     if(!validUrl.isUri(longUrl)) {

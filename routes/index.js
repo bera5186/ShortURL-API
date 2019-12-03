@@ -7,9 +7,10 @@ const model = require('../models/Url')
 router.get('/:code', async (req, res) => {
     
     try {
-        const url = await model.findOne({ urlCode: req.params.code });
+        const url = await model.findOne({ urlCode: req.params.code })
 
         if (url) {
+            await model.updateOne({ urlCode: req.params.code }, { clicks: url.clicks + 1})
             return res.redirect(url.longUrl)
         } else {
             return res.status(400).json('URL not found');
