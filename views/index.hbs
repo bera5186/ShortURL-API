@@ -82,8 +82,8 @@
         headers: { 'Content-Type': 'application/json' }
       }
 
-      await fetch('https://biteurl.herokuapp.com/api/url/shorten', postData)
-        .then(res => {
+      const res = await fetch('/api/url/shorten', postData)
+      /*  .then(res => {
           console.log(res.json().then((data) => {
             console.log(data.shortUrl)
             shortened.classList.remove("invisible")
@@ -94,7 +94,17 @@
         })
         .catch((err) => {
           console.log(err)
-        })
+        })*/
+
+      const data = await res.json()
+      console.log(data.shortUrl)
+
+      shortened.classList.remove("invisible")
+      shortened.classList.remove("alert-danger")
+      shortened.classList.add("alert-success")
+      shortened.innerHTML = `<a href=${data.shortUrl} target="_blank" id="shortUrl" >${data.shortUrl}</a><button class="btn btn-sm btn-primary right float-right" id="btn-copy-link" onclick="copyFunc()">Copy</button><span class="mr-2 right d-none" id="copied">Copied</span>`
+
+
 
       function saveClipBoard(data) {
         var dummy = document.createElement('input');
@@ -110,11 +120,11 @@
       }
     })
 
-    function copyFunc(){
+    function copyFunc() {
       var copyText = document.getElementById("shortUrl").href
       console.log(copyText)
 
-      navigator.clipboard.writeText(copyText).then(() => alert("Copied "+copyText)).catch(() => alert('cannot copy'))
+      navigator.clipboard.writeText(copyText).then(() => alert("Copied " + copyText)).catch(() => alert('cannot copy'))
     }
 
   </script>
