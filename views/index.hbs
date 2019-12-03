@@ -51,10 +51,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="/public/js/client.js"></script>
-
-
-
 
   <script>
 
@@ -71,7 +67,6 @@
 
     btn.addEventListener("click", async (e) => {
       e.preventDefault()
-      //console.log(longUrl.value)
       const body = JSON.stringify({
         "longUrl": longUrl.value
       })
@@ -83,21 +78,7 @@
       }
 
       const res = await fetch('/api/url/shorten', postData)
-      /*  .then(res => {
-          console.log(res.json().then((data) => {
-            console.log(data.shortUrl)
-            shortened.classList.remove("invisible")
-            shortened.classList.remove("alert-danger")
-            shortened.classList.add("alert-success")
-            shortened.innerHTML = `<a href=${data.shortUrl} target="_blank" id="shortUrl" >${data.shortUrl}</a><button class="btn btn-sm btn-primary right float-right" id="btn-copy-link" onclick="copyFunc()">Copy</button><span class="mr-2 right d-none" id="copied">Copied</span>`
-          }).catch(err => console.log(err)))
-        })
-        .catch((err) => {
-          console.log(err)
-        })*/
-
       const data = await res.json()
-      console.log(data.shortUrl)
 
       shortened.classList.remove("invisible")
       shortened.classList.remove("alert-danger")
@@ -122,8 +103,6 @@
 
     function copyFunc() {
       var copyText = document.getElementById("shortUrl").href
-      console.log(copyText)
-
       navigator.clipboard.writeText(copyText).then(() => alert("Copied " + copyText)).catch(() => alert('cannot copy'))
     }
 
